@@ -41,7 +41,6 @@ const Footer = () => {
           <Link href="/">Contact</Link>
           <Link href="/">Blog</Link>
           <Link href="/">Affiliate Program</Link>
-          <Link href="/">Affiliate Program</Link>
         </div>
       </div>
     </footer>
