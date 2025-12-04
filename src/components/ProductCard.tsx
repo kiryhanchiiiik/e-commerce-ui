@@ -33,12 +33,26 @@ const ProductCart = ({ product }: { product: ProductType }) => {
               className="ring ring-gray-300 rounded-md px-2 py-1"
             >
               {product.sizes.map((size) => (
-                <option value={size}>{size.toUpperCase()}</option>
+                <option key={size} value={size}>
+                  {size.toUpperCase()}
+                </option>
               ))}
             </select>
           </div>
           {/* COLORS */}
-          <div></div>
+          <div className="flex flex-col gap-1">
+            <span className="text-gray-500">Color</span>
+            <div className="flex items-center gap-2">
+              {product.colors.map((color) => (
+                <div key={color}>
+                  <div
+                    className="w-[14px] h-[14px] rounded-full"
+                    style={{ backgroundColor: color }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
