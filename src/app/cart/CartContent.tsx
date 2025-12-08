@@ -128,7 +128,7 @@ const CartContent = () => {
                 // SINGLE CART ITEM
                 <div
                   className="flex items-center justify-between"
-                  key={item.id}
+                  key={item.id + item.selectedSize + item.selectedColor}
                 >
                   <div className="flex gap-8">
                     <div className="relative w-32 h-32 bg-gray-50 rounded-lg overflow-hidden">
