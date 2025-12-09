@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductType } from "@/types";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const ProductInteraction = ({
   product,
@@ -11,6 +12,15 @@ const ProductInteraction = ({
   selectedSize: string;
   selectedColor: string;
 }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const handleTypeChange = (type: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(type, value);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   return (
     <div className="flex flex-col gap-4 mt-4">
       {/* SIZE */}
@@ -23,6 +33,7 @@ const ProductInteraction = ({
                 selectedSize === size ? "border-gray-600" : "border-gray-300"
               }`}
               key={size}
+              onClick={() => handleTypeChange("size", size)}
             >
               <div
                 className={`w-6 h-6 text-center flex items-center justify-center ${
