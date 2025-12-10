@@ -37,13 +37,14 @@ const ProductPage = async ({
   params,
   searchParams,
 }: {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ color: string; size: string }>;
+  params: { id: string };
+  searchParams: { color?: string; size?: string };
 }) => {
-  const { size, color } = await searchParams;
+  const { size, color } = searchParams || {};
 
   const selectedSize = size || (product.sizes[0] as string);
   const selectedColor = color || (product.colors[0] as string);
+
   return (
     <div className="flex flex-col gap-4 lg:flex-row md:gap-12 mt-12">
       {/* IMAGE */}
@@ -93,9 +94,7 @@ const ProductPage = async ({
           By clicking Pay Now, you agree to our{" "}
           <span className="underline hover:text-black">Terms & Conditions</span>{" "}
           and <span className="underline hover:text-black">Privacy Policy</span>
-          . You authorize us to charge your selected payment method for the
-          total amount shown. All sales are subject to our return and{" "}
-          <span className="underline hover:text-black">Refund Policies</span>.
+          .
         </p>
       </div>
     </div>
