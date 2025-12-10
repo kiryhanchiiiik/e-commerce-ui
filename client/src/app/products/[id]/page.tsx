@@ -1,5 +1,6 @@
 import ProductInteraction from "@/components/ProductInteraction";
 import { ProductType } from "@/types";
+import { Metadata } from "next";
 import Image from "next/image";
 
 // TEMPORARY
@@ -24,12 +25,10 @@ export const generateMetadata = async ({
   params,
 }: {
   params: { id: string };
-}) => {
-  // TODO:get the product from db
-  // TEMPORARY
+}): Promise<Metadata> => {
   return {
     title: product.name,
-    describe: product.description,
+    description: product.description,
   };
 };
 
@@ -38,7 +37,7 @@ const ProductPage = async ({
   searchParams,
 }: {
   params: { id: string };
-  searchParams: { color?: string; size?: string };
+  searchParams?: { color?: string; size?: string };
 }) => {
   const { size, color } = searchParams || {};
 
